@@ -36,6 +36,8 @@ Differences between [Bash] and [Ash][Almquist Shell] can also be a source of wei
 
 ### simplepieng/base
 
+[![](https://img.shields.io/microbadger/image-size/simplepieng/base.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/base) [![](https://img.shields.io/microbadger/layers/simplepieng/base.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/base)
+
 Builds on top of the official PHP images by including the following PHP extensions, which are used by SimplePie NG or one of its underlying requirements.
 
 [curl](https://php.net/manual/en/book.curl.php), [ds](https://www.php.net/manual/en/book.ds.php), [intl](https://www.php.net/manual/en/book.intl.php), [json](https://www.php.net/manual/en/book.json.php), [mbstring](https://www.php.net/manual/en/book.mbstring.php), [opcache](https://www.php.net/manual/en/book.opcache.php), [xml](https://www.php.net/manual/en/book.xml.php), [xsl](https://www.php.net/manual/en/book.xsl.php), [zip](https://www.php.net/manual/en/book.zip.php)
@@ -46,20 +48,17 @@ You can mount the current directory inside the Docker container with the followi
 docker run -ti --volume $(pwd):/workspace simplepieng/base:7.3 /bin/sh
 ```
 
-A couple of things which _may_ be helpful is a new shell prompt and an alias for `ll`.
-
-```bash
-export PS1="[\u@\h: \w] \T [$?] \\$ "
-alias ll="ls -lahF";
-```
-
 ### simplepieng/test-runner
+
+[![](https://img.shields.io/microbadger/image-size/simplepieng/test-runner.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-runner) [![](https://img.shields.io/microbadger/layers/simplepieng/test-runner.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-runner)
 
 Builds on `simplepieng/base` and simply adds [`make`](https://www.gnu.org/software/make/).
 
 On launch, it automatically runs `make test` via the [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint) statement. This behavior can be overridden to launch a shell when running the [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) command and passing the `--entrypoint sh` option.
 
 ### simplepieng/test-coverage
+
+[![](https://img.shields.io/microbadger/image-size/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage) [![](https://img.shields.io/microbadger/layers/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage)
 
 
 
