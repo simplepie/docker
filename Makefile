@@ -107,31 +107,6 @@ rmint:
 	docker images | grep "<none>" | awk '{print $$3}' | xargs -P 2 -I% docker rmi -f %
 
 #-------------------------------------------------------------------------------
-# Running tests
-
-.PHONY: test
-test:
-	bin/phpunit --testsuite all
-
-.PHONY: test-quick
-test-quick:
-	docker-compose up $(TEST_QUICK)
-
-.PHONY: test-coverage
-test-coverage:
-	docker-compose up $(TEST_COVER)
-
-#-------------------------------------------------------------------------------
-# Extra Resources
-
-.PHONY: entities
-entities:
-	wget -O resources/entities.json https://www.w3.org/TR/html5/entities.json
-	tools/entities.php
-	cat resources/entities.dtd | uniq > resources/entities2.dtd
-	mv resources/entities2.dtd resources/entities.dtd
-
-#-------------------------------------------------------------------------------
 # PHP build process stuff
 
 .PHONY: install-composer
