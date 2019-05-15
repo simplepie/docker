@@ -2,11 +2,7 @@
 
 ----
 
-**SimplePie NG** is a modern, _next-generation_ PHP package for working with syndication feeds. It has been written from the ground-up to take advantage of the modern features of PHP 7.2+.
-
-It starts with a completely different kind of thinking, and more than 15 years of experience in software engineering and open-source. It is written with a view of PHP from today and beyond, and is being built in such a way that greater community involvement should be far easier from much earlier in the project's life.
-
-See the [Documentation](https://github.com/simplepie/simplepie-ng/wiki) or the [API Reference](https://simplepie.github.io/simplepie-ng/).
+These are [Docker images](https://hub.docker.com/u/simplepieng) designed for developing and testing modern SimplePie projects. We support the latest versions of **7.2** and **7.3**.
 
 [![Medium](https://img.shields.io/badge/medium-simplepie--ng-blue.svg?style=for-the-badge)](https://medium.com/simplepie-ng)
 [![Follow](https://img.shields.io/twitter/follow/simplepie_ng.svg?style=for-the-badge&label=Twitter)](https://twitter.com/intent/follow?screen_name=simplepie_ng)
