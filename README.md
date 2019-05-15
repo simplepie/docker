@@ -60,7 +60,7 @@ On launch, it automatically runs `make test` via the [`ENTRYPOINT`](https://docs
 
 [![](https://img.shields.io/microbadger/image-size/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage) [![](https://img.shields.io/microbadger/layers/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage)
 
-
+Builds on top of the `simplepieng/base` images by adding [xdebug](https://xdebug.org) and [uopz](https://www.php.net/manual/en/book.uopz.php) extensions. This facilitates the ability to generate code coverage reports when you run [PHPUnit] tests.
 
 ## Please Support or Sponsor Development
 
@@ -80,5 +80,6 @@ Your contributions are greatly and sincerely appreciated.
   [Docker Desktop]: https://hub.docker.com/search?q=docker%20desktop&type=edition&offering=community
   [glibc]: https://www.gnu.org/software/libc/
   [musl]: https://www.musl-libc.org
+  [PHPUnit]: https://phpunit.de
   [setlocale]: https://www.php.net/manual/en/function.setlocale.php
   [strftime]: https://php.net/manual/en/function.strftime.php
