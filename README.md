@@ -19,7 +19,7 @@ See the [Documentation](https://github.com/simplepie/simplepie-ng/wiki) or the [
 
 ## Images
 
-All of these images are built from the Alpine Linux variants of the [official PHP images](https://hub.docker.com/_/php). SimplePie-NG (and all related _modern_ SimplePie projects) officially supports the latest releases of 7.2 and 7.3.
+All of these images are built from the Alpine Linux variants of the [official PHP images](https://hub.docker.com/_/php). SimplePie-NG (and all related _modern_ SimplePie projects) officially supports the latest releases of 7.2 and 7.3. The timezone built into the Docker image is UTC. This means that logs and logger output will use UTC for their timezone.
 
 These are designed for _local development_ with [Docker Desktop]. You can use `FROM simplepieng/base:{TAG}` in your own `Dockerfile` to build a production image, but you should only do so if you [consciously choose to trust the SimplePie core team](https://ryanparman.com/posts/2018/understanding-trust-in-your-infrastructure/).
 
@@ -38,15 +38,20 @@ Differences between [Bash] and [Ash][Almquist Shell] can also be a source of wei
 
 Builds on top of the official PHP images by including the following PHP extensions, which are used by SimplePie NG or one of its underlying requirements.
 
-* [curl](https://php.net/manual/en/book.curl.php)
-* [ds](https://www.php.net/manual/en/book.ds.php)
-* [intl](https://www.php.net/manual/en/book.intl.php)
-* [json](https://www.php.net/manual/en/book.json.php)
-* [mbstring](https://www.php.net/manual/en/book.mbstring.php)
-* [opcache](https://www.php.net/manual/en/book.opcache.php)
-* [xml](https://www.php.net/manual/en/book.xml.php)
-* [xsl](https://www.php.net/manual/en/book.xsl.php)
-* [zip](https://www.php.net/manual/en/book.zip.php)
+[curl](https://php.net/manual/en/book.curl.php), [ds](https://www.php.net/manual/en/book.ds.php), [intl](https://www.php.net/manual/en/book.intl.php), [json](https://www.php.net/manual/en/book.json.php), [mbstring](https://www.php.net/manual/en/book.mbstring.php), [opcache](https://www.php.net/manual/en/book.opcache.php), [xml](https://www.php.net/manual/en/book.xml.php), [xsl](https://www.php.net/manual/en/book.xsl.php), [zip](https://www.php.net/manual/en/book.zip.php)
+
+You can mount the current directory inside the Docker container with the following command:
+
+```bash
+docker run -ti --volume $(pwd):/workspace simplepieng/base:7.3 /bin/sh
+```
+
+A couple of things which _may_ be helpful is a new shell prompt and an alias for `ll`.
+
+```bash
+export PS1="[\u@\h: \w] \T [$?] \\$ "
+alias ll="ls -lahF";
+```
 
 ### simplepieng/test-runner
 
@@ -55,6 +60,8 @@ Builds on `simplepieng/base` and simply adds [`make`](https://www.gnu.org/softwa
 On launch, it automatically runs `make test` via the [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint) statement. This behavior can be overridden to launch a shell when running the [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) command and passing the `--entrypoint sh` option.
 
 ### simplepieng/test-coverage
+
+
 
 ## Please Support or Sponsor Development
 
