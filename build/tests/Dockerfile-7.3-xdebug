@@ -1,5 +1,4 @@
 FROM simplepieng/base:7.3
-
 ENV BUILD_DEPS alpine-sdk curl-dev icu-dev libxml2-dev libxslt-dev git autoconf
 ENV XDEBUG_VERSION 2.7.2
 
@@ -10,15 +9,18 @@ RUN cd /tmp && \
 	cd /tmp/xdebug && \
     git checkout ${XDEBUG_VERSION} && \
     sh ./rebuild.sh
-RUN rm -Rf /tmp/xdebug
-RUN echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
-RUN apk del .build-deps
 
-# Keep make no matter what
+#-------------------------------------------------------------------------------
+
+FROM simplepieng/base:7.3
+
+RUN echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
+RUN mkdir -p /usr/local/lib/php/extensions/no-debug-non-zts-20170718
 RUN apk add make
 
 # Copy PHP Config
 COPY build/tests/php.ini /usr/local/etc/php/php.ini
+COPY --from=0 /tmp/xdebug/modules/xdebug.so /usr/local/lib/php/extensions/no-debug-non-zts-20180731/xdebug.so
 
 WORKDIR /workspace
 ENTRYPOINT ["make", "test"]
