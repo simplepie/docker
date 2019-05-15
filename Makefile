@@ -9,7 +9,9 @@
 
 PHP_LAST=7.2
 PHP_CURR=7.3
-PHP_NEXT=7.4
+
+PHP_LAST_EXT_DATE=20170718
+PHP_CURR_EXT_DATE=20180731
 
 BUILD_DOCKER=docker build --compress --force-rm --squash
 BUILD_COMPOSE=docker-compose build --pull --compress --parallel
@@ -72,8 +74,10 @@ build-coverage:
 .PHONY: dockerfile
 dockerfile:
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^FROM simplepieng\/base:([^\s]+)/FROM simplepieng\/base:$(PHP_LAST)/" %'
+	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^ENV PHP_EXT_DATE ([^\s]+)/ENV PHP_EXT_DATE $(PHP_LAST_EXT_DATE)/" %'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'cp -fv % $$(echo % | sed -r "s/$(PHP_LAST)/$(PHP_CURR)/g")'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_CURR)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^FROM simplepieng\/base:$(PHP_LAST)/FROM simplepieng\/base:$(PHP_CURR)/" %'
+	find $$(pwd)/build -type f -name Dockerfile-$(PHP_CURR)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^ENV PHP_EXT_DATE ([^\s]+)/ENV PHP_EXT_DATE $(PHP_CURR_EXT_DATE)/" %'
 
 .PHONY: push-images
 push-images:
