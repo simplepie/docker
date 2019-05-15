@@ -86,21 +86,6 @@ rmint:
 	docker images | grep "<none>" | awk '{print $$3}' | xargs -P 2 -I% docker rmi -f %
 
 #-------------------------------------------------------------------------------
-# PHP build process stuff
-
-@@PHP_BUILD_PROCESS@@
-
-#-------------------------------------------------------------------------------
-# Documentation tasks
-
-@@PROJECT_DOCS@@
-
-#-------------------------------------------------------------------------------
-# Linting and Static Analysis
-
-@@LINTING_STATIC_ANALYSIS@@
-
-#-------------------------------------------------------------------------------
 # Git Tasks
 
 @@RELEASE_TASKS@@
