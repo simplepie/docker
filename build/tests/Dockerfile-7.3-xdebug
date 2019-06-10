@@ -1,16 +1,10 @@
 FROM simplepieng/base:7.3
 ENV BUILD_DEPS alpine-sdk curl-dev icu-dev libxml2-dev libxslt-dev git autoconf
-ENV INSTALL_PECL uopz
-ENV XDEBUG_VERSION 2.7.2
+ENV INSTALL_PECL uopz xdebug
 
 # Install Packages
 RUN apk add --virtual .build-deps $BUILD_DEPS
 RUN pecl install $INSTALL_PECL && docker-php-ext-enable $INSTALL_PECL
-RUN cd /tmp && \
-	git clone git://github.com/xdebug/xdebug.git && \
-	cd /tmp/xdebug && \
-    git checkout ${XDEBUG_VERSION} && \
-    sh ./rebuild.sh
 
 #-------------------------------------------------------------------------------
 

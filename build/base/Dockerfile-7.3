@@ -3,7 +3,7 @@ FROM php:7.3-cli-alpine3.9
 ENV BUILD_DEPS alpine-sdk curl-dev icu-dev libxml2-dev libxslt-dev libzip-dev autoconf
 ENV PERSISTENT_DEPS curl icu libxslt libzip
 ENV INSTALL_EXTENSIONS curl intl json opcache mbstring xml xsl zip
-ENV INSTALL_PECL ds
+ENV INSTALL_PECL ast ds
 
 # Install Packages
 RUN apk upgrade --update
