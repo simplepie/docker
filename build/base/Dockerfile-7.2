@@ -14,4 +14,9 @@ RUN pecl install $INSTALL_PECL && docker-php-ext-enable $INSTALL_PECL
 RUN apk del .build-deps
 RUN apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS
 
+# Install Composer
+RUN curl -S https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer \
+    | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer global require hirak/prestissimo
+
 WORKDIR /workspace
