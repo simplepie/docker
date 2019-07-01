@@ -55,3 +55,31 @@ services:
             nofile:
                 soft: 65535
                 hard: 100000
+
+    #---------------------------------------------------------------------------
+
+    # Run the test suite in Alpine Linux
+    tests-74:
+        image: "simplepieng/test-runner:7.4"
+        build:
+            context: .
+            dockerfile: build/tests/Dockerfile-7.4
+        volumes:
+            - ./:/workspace
+        ulimits:
+            nofile:
+                soft: 65535
+                hard: 100000
+
+    # Run the test suite in Alpine Linux with Xdebug enabled for code coverage
+    coverage-74:
+        image: "simplepieng/test-coverage:7.4"
+        build:
+            context: .
+            dockerfile: build/tests/Dockerfile-7.4-xdebug
+        volumes:
+            - ./:/workspace
+        ulimits:
+            nofile:
+                soft: 65535
+                hard: 100000
