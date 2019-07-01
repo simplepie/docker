@@ -40,15 +40,15 @@ all:
 
 .PHONY: base-72
 base-72:
-	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_LAST) --file build/base/Dockerfile-$(PHP_LAST) .
+	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_LAST) --file build/base/Dockerfile-$(PHP_LAST) --build-arg BUILD_DATE=$$(date -u +"%Y-%m-%dT%H:%M:%SZ") --build-arg VCS_URL=$$(git config --get remote.origin.url) --build-arg VCS_REF=$$(git rev-parse --short HEAD) .
 
 .PHONY: base-73
 base-73:
-	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_CURR) --file build/base/Dockerfile-$(PHP_CURR) .
+	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_CURR) --file build/base/Dockerfile-$(PHP_CURR) --build-arg BUILD_DATE=$$(date -u +"%Y-%m-%dT%H:%M:%SZ") --build-arg VCS_URL=$$(git config --get remote.origin.url) --build-arg VCS_REF=$$(git rev-parse --short HEAD) .
 
 .PHONY: base-74
 base-74:
-	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_NEXT) --file build/base/Dockerfile-$(PHP_NEXT) .
+	$(BUILD_DOCKER) --tag simplepieng/base:$(PHP_NEXT) --file build/base/Dockerfile-$(PHP_NEXT) --build-arg BUILD_DATE=$$(date -u +"%Y-%m-%dT%H:%M:%SZ") --build-arg VCS_URL=$$(git config --get remote.origin.url) --build-arg VCS_REF=$$(git rev-parse --short HEAD) .
 
 .PHONY: base-all
 base-all: base-72 base-73 base-74
@@ -85,13 +85,16 @@ build-coverage:
 
 .PHONY: dockerfile
 dockerfile:
+	@ # tests:7.2
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^FROM simplepieng\/base:([^\s]+)/FROM simplepieng\/base:$(PHP_LAST)/" %'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^ENV PHP_EXT_DATE ([^\s]+)/ENV PHP_EXT_DATE $(PHP_LAST_EXT_DATE)/" %'
 
+	@ # tests:7.3
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_LAST)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'cp -fv % $$(echo % | sed -r "s/$(PHP_LAST)/$(PHP_CURR)/g")'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_CURR)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^FROM simplepieng\/base:$(PHP_LAST)/FROM simplepieng\/base:$(PHP_CURR)/" %'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_CURR)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^ENV PHP_EXT_DATE ([^\s]+)/ENV PHP_EXT_DATE $(PHP_CURR_EXT_DATE)/" %'
 
+	@ # tests:7.4
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_CURR)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'cp -fv % $$(echo % | sed -r "s/$(PHP_CURR)/$(PHP_NEXT)/g")'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_NEXT)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^FROM simplepieng\/base:$(PHP_CURR)/FROM simplepieng\/base:$(PHP_NEXT)/" %'
 	find $$(pwd)/build -type f -name Dockerfile-$(PHP_NEXT)* -not -path "*build/base*" | xargs -P $$(nproc) -I% bash -c 'sed -i -r "s/^ENV PHP_EXT_DATE ([^\s]+)/ENV PHP_EXT_DATE $(PHP_NEXT_EXT_DATE)/" %'

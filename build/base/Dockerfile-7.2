@@ -20,3 +20,19 @@ RUN curl -S https://raw.githubusercontent.com/composer/getcomposer.org/master/we
 RUN composer global require hirak/prestissimo
 
 WORKDIR /workspace
+
+# Labels
+ARG BUILD_DATE
+ARG PHP_VERSION
+ARG VCS_REF
+ARG VCS_URL
+
+LABEL org.label-schema.schema-version = "1.0.0-rc.1"
+LABEL org.label-schema.name           = "SimplePie base container for PHP $PHP_VERSION"
+LABEL org.label-schema.description    = "SimplePie and PHP $PHP_VERSION on Alpine Linux 3.10."
+LABEL org.label-schema.url            = "https://github.com/simplepie/docker"
+LABEL org.label-schema.vcs-url        = "$VCS_URL"
+LABEL org.label-schema.vcs-ref        = "$VCS_REF"
+LABEL org.label-schema.vendor         = "SimplePie",
+LABEL org.label-schema.build-date     = "$BUILD_DATE"
+LABEL org.simplepie.license           = "Apache-2.0"
