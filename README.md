@@ -4,7 +4,7 @@
 
 # SimplePie Docker Images
 
-These are [Docker images](https://hub.docker.com/u/simplepieng) designed for developing and testing modern SimplePie projects. We support the latest versions of **7.2** and **7.3**.
+These are [Docker images](https://hub.docker.com/u/simplepieng) designed for developing and testing modern SimplePie projects. We support the latest versions of **7.2** and **7.3**, and and are actively testing **7.4 pre-releases**.
 
 ## Badges
 
@@ -36,6 +36,7 @@ These are designed for _local development_ with [Docker Desktop]. You can use `F
 
 * `7.2-cli-alpine3.9`
 * `7.3-cli-alpine3.9`
+* `7.4-rc-cli-alpine3.9`
 
 ### Notes about Alpine Linux
 
@@ -51,7 +52,9 @@ Differences between [Bash] and [Ash][Almquist Shell] can also be a source of wei
 
 Builds on top of the official PHP images by including the following PHP extensions, which are used by SimplePie NG or one of its underlying requirements.
 
-[curl](https://php.net/manual/en/book.curl.php), [ds](https://www.php.net/manual/en/book.ds.php), [intl](https://www.php.net/manual/en/book.intl.php), [json](https://www.php.net/manual/en/book.json.php), [mbstring](https://www.php.net/manual/en/book.mbstring.php), [opcache](https://www.php.net/manual/en/book.opcache.php), [xml](https://www.php.net/manual/en/book.xml.php), [xsl](https://www.php.net/manual/en/book.xsl.php), [zip](https://www.php.net/manual/en/book.zip.php)
+[ast](https://github.com/nikic/php-ast), [curl](https://php.net/manual/en/book.curl.php), [ds](https://www.php.net/manual/en/book.ds.php), [intl](https://www.php.net/manual/en/book.intl.php), [json](https://www.php.net/manual/en/book.json.php), [mbstring](https://www.php.net/manual/en/book.mbstring.php), [opcache](https://www.php.net/manual/en/book.opcache.php), [pcntl](https://www.php.net/manual/en/book.pcntl.php), [xml](https://www.php.net/manual/en/book.xml.php), [xsl](https://www.php.net/manual/en/book.xsl.php), [zip](https://www.php.net/manual/en/book.zip.php)
+
+
 
 You can mount the current directory inside the Docker container with the following command:
 
@@ -92,4 +95,3 @@ Your contributions are greatly and sincerely appreciated. See the **Sponsor** bu
   [PHPUnit]: https://phpunit.de
   [setlocale]: https://www.php.net/manual/en/function.setlocale.php
   [strftime]: https://php.net/manual/en/function.strftime.php
-
