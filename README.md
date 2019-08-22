@@ -49,12 +49,11 @@ Differences between [Bash] and [Ash][Almquist Shell] can also be a source of wei
 ### simplepieng/base
 
 [![](https://img.shields.io/microbadger/image-size/simplepieng/base.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/base) [![](https://img.shields.io/microbadger/layers/simplepieng/base.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/base)
+[![Docker Pulls](https://img.shields.io/docker/pulls/simplepieng/base?logo=docker&logoColor=white&style=for-the-badge)](https://hub.docker.com/u/simplepieng/base)
 
 Builds on top of the official PHP images by including the following PHP extensions, which are used by SimplePie NG or one of its underlying requirements.
 
 [ast](https://github.com/nikic/php-ast), [curl](https://php.net/manual/en/book.curl.php), [ds](https://www.php.net/manual/en/book.ds.php), [intl](https://www.php.net/manual/en/book.intl.php), [json](https://www.php.net/manual/en/book.json.php), [mbstring](https://www.php.net/manual/en/book.mbstring.php), [opcache](https://www.php.net/manual/en/book.opcache.php), [pcntl](https://www.php.net/manual/en/book.pcntl.php), [xml](https://www.php.net/manual/en/book.xml.php), [xsl](https://www.php.net/manual/en/book.xsl.php), [zip](https://www.php.net/manual/en/book.zip.php)
-
-
 
 You can mount the current directory inside the Docker container with the following command:
 
@@ -65,6 +64,7 @@ docker run -ti --volume $(pwd):/workspace simplepieng/base:7.3 /bin/sh
 ### simplepieng/test-runner
 
 [![](https://img.shields.io/microbadger/image-size/simplepieng/test-runner.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-runner) [![](https://img.shields.io/microbadger/layers/simplepieng/test-runner.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-runner)
+[![Docker Pulls](https://img.shields.io/docker/pulls/simplepieng/test-runner?logo=docker&logoColor=white&style=for-the-badge)](https://hub.docker.com/u/simplepieng/test-runner)
 
 Builds on `simplepieng/base` and simply adds [`make`](https://www.gnu.org/software/make/).
 
@@ -73,6 +73,7 @@ On launch, it automatically runs `make test` via the [`ENTRYPOINT`](https://docs
 ### simplepieng/test-coverage
 
 [![](https://img.shields.io/microbadger/image-size/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage) [![](https://img.shields.io/microbadger/layers/simplepieng/test-coverage.svg?style=for-the-badge)](https://microbadger.com/images/simplepieng/test-coverage)
+[![Docker Pulls](https://img.shields.io/docker/pulls/simplepieng/test-coverage?logo=docker&logoColor=white&style=for-the-badge)](https://hub.docker.com/u/simplepieng/test-coverage)
 
 Builds on top of the `simplepieng/base` images by adding [xdebug](https://xdebug.org) and [uopz](https://www.php.net/manual/en/book.uopz.php) extensions. This facilitates the ability to generate code coverage reports when you run [PHPUnit] tests.
 
