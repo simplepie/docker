@@ -1,6 +1,9 @@
 FROM simplepieng/base:7.4
 
-RUN apk add make
+# Specify the shell that everything executes under
+SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
+
+RUN apk --no-cache add make
 COPY build/tests/php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /workspace

@@ -134,6 +134,36 @@ rmint:
 	docker images | grep "<none>" | awk '{print $$3}' | xargs -P 2 -I% docker rmi -f %
 
 #-------------------------------------------------------------------------------
+# Linting
+
+.PHONY: hadolint
+hadolint:
+	- hadolint build/base/Dockerfile-7.2
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/base/Dockerfile-7.3
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/base/Dockerfile-7.4
+
+	@echo "---------------------------------------------------------------------"
+
+	- hadolint build/tests/Dockerfile-7.2
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/tests/Dockerfile-7.3
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/tests/Dockerfile-7.4
+
+	@echo "---------------------------------------------------------------------"
+
+	- hadolint build/tests/Dockerfile-7.2-xdebug
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/tests/Dockerfile-7.3-xdebug
+	@echo "---------------------------------------------------------------------"
+	- hadolint build/tests/Dockerfile-7.4-xdebug
+
+.PHONY: lint
+lint: hadolint
+
+#-------------------------------------------------------------------------------
 # Git Tasks
 
 .PHONY: tag

@@ -1,5 +1,8 @@
 FROM php:7.4-rc-cli-alpine3.10
 
+# Specify the shell that everything executes under
+SHELL ["/bin/ash", "-euxo", "pipefail", "-c"]
+
 ENV BUILD_DEPS alpine-sdk autoconf curl-dev icu-dev libgcrypt-dev libgpg-error-dev libxml2-dev libxslt-dev libzip-dev oniguruma-dev
 ENV PERSISTENT_DEPS curl git icu libxslt libzip make
 ENV INSTALL_EXTENSIONS curl intl json opcache mbstring pcntl xml xsl zip

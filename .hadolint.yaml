@@ -1,0 +1,7 @@
+ignored:
+  - DL3017 # https://github.com/hadolint/hadolint/wiki/DL3017
+  - DL3018 # https://github.com/hadolint/hadolint/wiki/DL3018 (will do this in the future)
+  - DL3022 # https://github.com/hadolint/hadolint/wiki/DL3022 (since we generate some Dockerfiles, need to rewrite the regex to support FROM aliases)
+
+trustedRegistries:
+  - docker.io # Official upstream
