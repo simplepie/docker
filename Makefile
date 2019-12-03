@@ -111,7 +111,7 @@ push-images:
 
 	docker push simplepieng/test-coverage:$(PHP_LAST)
 	docker push simplepieng/test-coverage:$(PHP_CURR)
-	# docker push simplepieng/test-coverage:$(PHP_NEXT)
+	docker push simplepieng/test-coverage:$(PHP_NEXT)
 
 .PHONY: clean-72
 clean-72:
