@@ -14,7 +14,7 @@ RUN pecl install $INSTALL_PECL && docker-php-ext-enable $INSTALL_PECL
 
 FROM simplepieng/base:7.4
 
-ENV PHP_EXT_DATE 20190529
+ENV PHP_EXT_DATE 20190902
 ENV PHP_EXT_PATH /usr/local/lib/php/extensions/no-debug-non-zts-${PHP_EXT_DATE}
 
 RUN echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
